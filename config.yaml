@@ -1,0 +1,15 @@
+resolution_scale: 0.2
+
+cut_angles: [85, 200, 330]
+
+angular_pieces_center: [1540, 1730]
+
+min_count_per_angle: [2, 240, 100]
+
+max_count_per_angle: [250, 250, 250]
+
+x_range_test: [500, 1000]
+
+y_range_test: [500, 1000]
+
+image_file: "colonies.jpg"
