@@ -161,12 +161,13 @@ if __name__ == '__main__':
     #y_range_test = np.array([500, 1000])
     y_range_test = np.array(config["y_range_test"])
     x_range_test = (x_range_test * res_scale).astype(int)
-    y_range_test = (y_range_test * res_scale).astype(int)
-    radius = config["radius"]
+    y_range_test = (y_range_test * res_scale).astype(int) 
 
     data = cv2.imread(config["image_file"])
     data = cv2.resize(data, dsize=(0,0), fx=res_scale, fy=res_scale)
     data_shape = data.shape
+    radius = min(data_shape[0], data_shape[1]) / 2
+    print(radius)
     image_center = np.array([int(data_shape[1]/2), int(data_shape[0]/2)])
     angular_pieces_center = (angular_pieces_center * res_scale).astype(int)
     circle = plt.Circle((image_center[0], image_center[1]), radius, fill=False, color="white")
