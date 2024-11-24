@@ -12,4 +12,6 @@ x_range_test: [500, 1000]
 
 y_range_test: [500, 1000]
 
+radius: 1000
+
 image_file: "colonies.jpg"

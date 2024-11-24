@@ -162,13 +162,14 @@ if __name__ == '__main__':
     y_range_test = np.array(config["y_range_test"])
     x_range_test = (x_range_test * res_scale).astype(int)
     y_range_test = (y_range_test * res_scale).astype(int)
+    radius = config["radius"]
 
     data = cv2.imread(config["image_file"])
     data = cv2.resize(data, dsize=(0,0), fx=res_scale, fy=res_scale)
     data_shape = data.shape
     image_center = np.array([int(data_shape[1]/2), int(data_shape[0]/2)])
     angular_pieces_center = (angular_pieces_center * res_scale).astype(int)
-    circle = plt.Circle((image_center[0], image_center[1]), data_shape[0]/2, fill=False, color="white")
+    circle = plt.Circle((image_center[0], image_center[1]), radius, fill=False, color="white")
     plt.gca().add_patch(circle)
     plt.plot(image_center[0], image_center[1], marker="o", color="white")
     plt.plot(angular_pieces_center[0], angular_pieces_center[1], marker="o", color="white")
@@ -186,7 +187,7 @@ if __name__ == '__main__':
     colors, counts = np.unique(data_recolored, return_counts=True, axis=0)
     color_colonies = colors[np.argmin(counts)].astype(int)
     color_bkg = colors[np.argmax(counts)].astype(int)
-    data_recolored, label_matrix = recolor_image(data, image_center, data_shape[0]/2, color_colonies, color_bkg)
+    data_recolored, label_matrix = recolor_image(data, image_center, radius, color_colonies, color_bkg)
     #plt.imshow(data_recolored)
     #plt.show()
     if not arguments.test:
